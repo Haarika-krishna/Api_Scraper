@@ -20,7 +20,7 @@ function Home() {
         style={{ height: 'calc(100vh - 80px)' }} 
       >
         <div>
-          <h1 className="display-3 fw-bold text-dark">Welcome to API Scraper</h1>
+          <h1 className="display-3 fw-bold ">Welcome to API Scraper</h1>
           <p className="lead fs-4 text-muted">Scrape public data easily with one click!</p>
         </div>
       </div>

@@ -14,14 +14,31 @@ const Register = ({ onSuccess }) => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    // Simulate success if all fields are filled
-    if (form.name && form.email && form.password) {
-      onSuccess(); // 🔔 this shows the "Registered Successfully" popup
+  if (form.name && form.email && form.password) {
+    try {
+      const res = await fetch('https://api-scraper-backend.onrender.com/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(form)
+      });
+
+      const data = await res.json();
+      alert(data.message);
+
+      if (data.success) {
+        onSuccess(); // show success message or switch to login
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      alert('Something went wrong. Try again.');
     }
-  };
+  }
+};
 
   return (
     <form onSubmit={handleSubmit}>

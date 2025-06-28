@@ -2,13 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const User = require('./models/User');
-
+require('dotenv').config();
 const app = express();
 app.use(cors());
 app.use(express.json()); // for reading JSON body
 
 mongoose.connect(
-  'mongodb+srv://HaarikaBoini:Thoughtiv0001@cluster0.qgu6vpj.mongodb.net/ApiScraper?retryWrites=true&w=majority&appName=Cluster0',
+  process.env.MONGO_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true

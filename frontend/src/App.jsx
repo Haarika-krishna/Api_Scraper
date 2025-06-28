@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Home from './Home';
 import Price from './Price';
 import Login from './Login';
 import Register from './Register';
+import Dashboard from './Dashboard';
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import webScraperLogo from './Assets/webScraper2-remove.png';
 
 function App() {
@@ -13,10 +15,10 @@ function App() {
     const [showRegisterSuccess, setShowRegisterSuccess] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [showLoginSuccess, setShowLoginSuccess] = useState(false);
-
+    const navigate = useNavigate();
   return (
     <>
-    <div className="bg-light" style={{ minHeight: '100vh' }}>
+    <div className=" container-fluid bg-light " style={{ minHeight: '100vh' }}>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-5 py-2 shadow w-100" id='navbar-main'>
         <a className="navbar-brand d-flex align-items-center" href="/">
           <img
@@ -65,6 +67,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pricing" element={<Price />} />
+           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
      
      {showRegister && (
@@ -96,10 +99,14 @@ function App() {
           <button type="button" className="btn-close" onClick={() => setShowLogin(false)}></button>
         </div>
         <div className="modal-body">
-          <Login onSuccess={() => {
-            setShowLogin(false);
-            setShowLoginSuccess(true);
-            setTimeout(() => setShowLoginSuccess(false), 3000);
+         <Login onSuccess={() => {
+             setShowLogin(false);
+             setShowLoginSuccess(true);
+
+             setTimeout(() => {
+             setShowLoginSuccess(false);
+             navigate('/dashboard'); // 🔁 Navigate to dashboard after 2 seconds
+             }, 2000);
           }} />
         </div>
       </div>
