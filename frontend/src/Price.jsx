@@ -7,28 +7,28 @@ const  Price = ()=> {
     {
       title: 'Free',
       price: 0,
-      description: 'Basic web scraping access for testing and personal use.',
+      description: 'Basic web scraping access for individual and you can get 20 results in one request.',
     },
     {
       title: 'Developer',
       price: 500,
-      description: 'Advanced access for developers working on small projects.',
+      description: 'Advanced access for developers and can get 100 results in single request.',
     },
     {
       title: 'Startup',
       price: 1500,
-      description: 'Perfect for small startups needing regular data.',
+      description: 'Perfect for small startups needing regular data and can get 400 results in single request..',
     },
     {
       title: 'Business',
       price: 2500,
-      description: 'Full access for businesses with high-volume scraping needs.',
+      description: 'Full access for businesses with high-volume scraping needs and can get 800 results in single request..',
     },
   ];
 
   return (
     <div className="container-fluid py-5">
-      <h2 className="text-center mb-4">Pricing Plans</h2>
+      <h2 className="text-center mb-4">Want to start</h2>
       <div className="row">
         {plans.map((plan, index) => (
           <div className="col-md-3 mb-4" key={index}>
